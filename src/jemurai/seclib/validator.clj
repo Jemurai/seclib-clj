@@ -10,12 +10,11 @@
   [f input]
   (if (validate f input)
     true
-     (signal/security-event input)))
+     (signal/security-event input (str f) )))
 
 (defn valid-email?
   "Is the supplied email a valid email address."
   [email]
-  (signal/security-event "hello")
   (let [pattern #"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"]
     (if (and (string? email) (re-matches pattern email)) true false)))
 
