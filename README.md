@@ -1,20 +1,19 @@
 # Jemurai Security Library (SecLib)
 
-The Jemurai Security Library (Clojure) provides simple security primitive functions that many applications may want to use.
+The Jemurai Security Library (for Clojure) provides simple security primitive functions that many applications may want to use.  These include email validation, and other simple examples of validation.
 
 ## Installation
 
-Download from https://github.com/Jemurai/seclib.
+Build from source https://github.com/Jemurai/seclib-clj using `lein jar`.
+
+TODO:  Build and push to clojars and update instructions for use
+if this gets to the point where it is worthwhile.
 
 ## Usage
 
-FIXME: explanation
-
-    $ java -jar seclib-0.1.0-standalone.jar [args]
 
 ## Options
 
-FIXME: listing of options this app accepts.
 
 ## Examples
 
@@ -22,10 +21,5 @@ FIXME: listing of options this app accepts.
 
 ### Bugs
 
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
 
 ## License
