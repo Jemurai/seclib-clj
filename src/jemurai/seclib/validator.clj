@@ -30,13 +30,26 @@
   (let [pattern #"[a-z]*"]
     (if (and (string? input) (re-matches pattern input)) true false)))
 
+(defn valid-zip?
+  [input]
+  false
+  )
+
+(defn valid-company-name?
+  [input]
+  false)
+
+(defn valid-guid?
+  [input]
+  false)
+
 (defn password-complex?
   "Is the password complex?"
   [input]
-  true)
+  false)
 
 (defn have-i-been-pwned?
   "Is the password in a collected breach"
   [input]
-  true)
+  false)
 
