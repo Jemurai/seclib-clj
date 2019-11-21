@@ -1,5 +1,6 @@
 (ns jemurai.seclib.validator
-  (:require [jemurai.seclib.signal :as signal])
+  (:require [jemurai.seclib.signal :as signal]
+            [clojure.spec.alpha :as s])
   (:gen-class))
 
 (defn validate
@@ -53,3 +54,10 @@
   [input]
   false)
 
+(def short-zip-regex #"^[0-9][0-9][0-9][0-9][0-9]")
+(s/def ::short-zip-type (s/and string? #(re-matches short-zip-regex %)))
+
+(defn valid-short-zip?
+  "Is the zip short in a collected breach"
+  [input]
+  (if (s/valid? ::short-zip-type input) true false))

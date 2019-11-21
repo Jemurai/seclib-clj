@@ -17,9 +17,10 @@
 ; This only works when the signal service is actually running!
 (defn report-signal
   [signal]
-  (client/post "http://localhost:8000/signal" {:form-params signal :content-type :json})
+  ;(client/post "http://localhost:8000/signal" {:form-params signal :content-type :json})
   )
 
+;; Top level general event reporting methods.
 (defn security-event
   "Build the security event."
   [request tags]
@@ -48,4 +49,30 @@
     :request request
     :tags tags} )
   false)
+
+;; Helpers
+
+;; Events that are both security signal and audit related.
+(defn login-event
+  "Login event handling - which will go to signal and audit
+   Parameters required are the request, and the subject that logged in"
+  [request name]
+  (security-event request name)
+  (audit-event request name "Tags related to login controls"))
+
+;; Events that are geared toward generating audit trail.
+(defn data-access-event
+  "Audit access to data - which will go to audit
+   Parameters required are the request, and the subject that logged in"
+  [request name data]
+  (audit-event request (str name "accessed" data)))
+
+;; Events that are geared toward generating security signal specifically.
+(defn unauthorized-event
+  "Unauthorized event handling - which will go to signal.
+   Parameters required are the request, the subject that logged in
+   and the data "
+  [request subject action data]
+  (security-event request 
+                  (str subject " attempted to perform " action " on " data)))
 

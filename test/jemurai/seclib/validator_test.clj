@@ -53,6 +53,14 @@
      (is (= true (validate-and-signal valid-number? "13")))
      (is (= false (validate-and-signal valid-email? "abd"))))))
 
+(deftest validate-short-zip-test
+    (testing "Zip code validator")
+    (and
+     (is (= true (valid-short-zip? "01060")))
+     (is (= false (valid-short-zip? "I0912")))
+     (is (= false (valid-short-zip? "90210'")))))
+
+
 (comment
   ; Example for Zip
   (deftest validate-zip-test
